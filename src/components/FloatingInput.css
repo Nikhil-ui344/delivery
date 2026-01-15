@@ -1,0 +1,83 @@
+.floating-input-wrapper {
+  margin-bottom: 24px;
+}
+
+.floating-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  border: 2px solid #E5E7EB;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-input-container.is-focused {
+  border-color: var(--primary-red);
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+}
+
+.floating-input-container.has-error {
+  border-color: var(--danger);
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  color: #9CA3AF;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+
+.floating-input-container.is-focused .input-icon {
+  color: var(--primary-red);
+}
+
+.floating-input {
+  width: 100%;
+  padding: 18px 16px;
+  padding-left: 48px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: var(--dark-text);
+  background: transparent;
+  font-weight: 500;
+}
+
+.floating-input-container:not(:has(.input-icon)) .floating-input {
+  padding-left: 16px;
+}
+
+.floating-label {
+  position: absolute;
+  left: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  background: var(--white);
+  padding: 0 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.floating-input-container:not(:has(.input-icon)) .floating-label {
+  left: 16px;
+}
+
+.required-star {
+  color: var(--danger);
+  margin-left: 2px;
+}
+
+.input-error {
+  margin-top: 6px;
+  color: var(--danger);
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

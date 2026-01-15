@@ -1,0 +1,248 @@
+.intro-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, var(--primary-red) 0%, var(--secondary-red) 50%, #7C2D12 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  overflow: hidden;
+}
+
+/* Animated Background */
+.intro-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.intro-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.circle-1 {
+  width: 600px;
+  height: 600px;
+  background: var(--gold);
+  top: -200px;
+  right: -200px;
+}
+
+.circle-2 {
+  width: 500px;
+  height: 500px;
+  background: var(--primary-red);
+  bottom: -150px;
+  left: -150px;
+}
+
+.circle-3 {
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.3);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Sparkles */
+.sparkles-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+
+/* Main Content */
+.intro-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Logo Icon */
+.intro-icon {
+  width: 140px;
+  height: 140px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Brand Name */
+.intro-brand {
+  position: relative;
+}
+
+.intro-brand h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--white);
+  margin: 0;
+  letter-spacing: -1px;
+  text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+}
+
+.brand-accent {
+  background: linear-gradient(135deg, var(--gold) 0%, #fff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.brand-underline {
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  border-radius: 2px;
+  margin-top: 12px;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.5);
+}
+
+/* Tagline */
+.intro-tagline {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Decorative Stars */
+.intro-stars {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.intro-stars svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Progress Bar */
+.intro-progress-container {
+  width: 300px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.intro-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--white) 50%, var(--gold) 100%);
+  background-size: 200% 100%;
+  animation: shimmerProgress 1.5s infinite;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
+}
+
+@keyframes shimmerProgress {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Wave Decoration */
+.intro-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.intro-wave svg {
+  display: block;
+  width: 100%;
+  height: 120px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .intro-icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  .intro-icon svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .intro-brand h1 {
+    font-size: 2.5rem;
+  }
+
+  .intro-tagline {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+
+  .intro-progress-container {
+    width: 250px;
+  }
+
+  .circle-1,
+  .circle-2,
+  .circle-3 {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-brand h1 {
+    font-size: 2rem;
+  }
+
+  .intro-tagline {
+    font-size: 0.9rem;
+  }
+
+  .intro-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .intro-icon svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .intro-stars svg {
+    width: 16px;
+    height: 16px;
+  }
+}

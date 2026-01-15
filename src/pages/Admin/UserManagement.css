@@ -1,0 +1,75 @@
+.user-management-page {
+  min-height: 100vh;
+  background: var(--cream);
+  padding: 30px 0;
+}
+
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.user-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.user-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-info h3 {
+  color: var(--primary-red);
+  font-size: 1.3rem;
+  margin: 0 0 15px 0;
+}
+
+.user-detail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+  color: var(--dark-text);
+  font-size: 0.95rem;
+}
+
+.user-detail svg {
+  color: var(--primary-red);
+}
+
+.user-detail.total-spent {
+  color: var(--gold);
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .users-grid {
+    grid-template-columns: 1fr;
+  }
+}

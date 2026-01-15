@@ -1,0 +1,188 @@
+.inventory-page {
+  min-height: 100vh;
+  background: var(--cream);
+  padding: 30px 0;
+}
+
+.low-stock-alert {
+  background: var(--warning);
+  color: var(--white);
+  padding: 15px 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.inventory-table-container {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  margin-bottom: 30px;
+}
+
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.inventory-table th {
+  background: var(--primary-red);
+  color: var(--white);
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.inventory-table td {
+  padding: 15px;
+  border-bottom: 1px solid var(--border);
+}
+
+.inventory-table tr.low-stock {
+  background: #fff3cd;
+}
+
+.inventory-table tr.out-of-stock {
+  background: #f8d7da;
+}
+
+.item-cell {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.item-cell img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.category-cell {
+  text-transform: capitalize;
+  color: #666;
+}
+
+.stock-level {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stock-level input {
+  width: 80px;
+  padding: 8px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.stock-text {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.stock-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.stock-badge.good {
+  background: var(--success);
+  color: var(--white);
+}
+
+.stock-badge.low {
+  background: var(--warning);
+  color: var(--white);
+}
+
+.stock-badge.out {
+  background: var(--danger);
+  color: var(--white);
+}
+
+.stock-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.restock-btn {
+  padding: 8px 15px;
+  background: var(--primary-red);
+  color: var(--white);
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.restock-btn:hover {
+  background: var(--secondary-red);
+}
+
+.stock-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.summary-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: var(--primary-red);
+}
+
+.summary-card svg {
+  margin-bottom: 15px;
+}
+
+.summary-card h3 {
+  color: var(--dark-text);
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+.summary-card p {
+  color: var(--primary-red);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.summary-card.low svg,
+.summary-card.low p {
+  color: var(--warning);
+}
+
+.summary-card.out svg,
+.summary-card.out p {
+  color: var(--danger);
+}
+
+@media (max-width: 968px) {
+  .inventory-table-container {
+    overflow-x: scroll;
+  }
+
+  .stock-actions {
+    flex-direction: column;
+  }
+
+  .restock-btn {
+    width: 100%;
+  }
+}

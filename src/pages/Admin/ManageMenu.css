@@ -245,6 +245,113 @@
   background: #D32F2F;
 }
 
+/* Image Upload Styles */
+.image-upload-container {
+  border: 3px dashed var(--border);
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  background: var(--light-gray);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-upload-container.dragging {
+  border-color: var(--primary-red);
+  background: rgba(220, 38, 38, 0.05);
+  transform: scale(1.02);
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--dark-text);
+  width: 100%;
+}
+
+.upload-placeholder svg {
+  color: var(--primary-red);
+  opacity: 0.6;
+}
+
+.upload-placeholder p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--dark-text);
+}
+
+.upload-placeholder span {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.file-input-label {
+  background: linear-gradient(135deg, var(--primary-red) 0%, var(--secondary-red) 100%);
+  color: var(--white);
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.file-input-label:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.image-preview {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--danger);
+  color: var(--white);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.remove-image-btn:hover {
+  background: #D32F2F;
+  transform: scale(1.1);
+}
+
+.form-group small {
+  color: #666;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
 @media (max-width: 768px) {
   .page-header {
     flex-direction: column;
@@ -277,5 +384,24 @@
 
   .category-filter button {
     width: 100%;
+  }
+
+  .image-upload-container {
+    padding: 20px;
+    min-height: 200px;
+  }
+
+  .image-preview img {
+    height: 200px;
+  }
+
+  .upload-placeholder svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .file-input-label {
+    padding: 10px 24px;
+    font-size: 0.9rem;
   }
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from '../../AppContext';
-import { Plus, Edit2, Trash2, Eye, EyeOff } from 'lucide-react';
+import { Plus, Edit2, Trash2, Eye, EyeOff, Upload, X as CloseIcon } from 'lucide-react';
 import './ManageMenu.css';
 
 function ManageMenu() {
@@ -9,6 +9,8 @@ function ManageMenu() {
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [isDragging, setIsDragging] = useState(false);
+  const [imagePreview, setImagePreview] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     category: 'breakfast',
@@ -27,6 +29,51 @@ function ManageMenu() {
       ...formData,
       [name]: type === 'checkbox' ? checked : value
     });
+  };
+
+  const handleFileSelect = (file) => {
+    if (file && file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const imageUrl = reader.result;
+        setFormData({ ...formData, image: imageUrl });
+        setImagePreview(imageUrl);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      alert('Please select a valid image file');
+    }
+  };
+
+  const handleFileInput = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      handleFileSelect(file);
+    }
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      handleFileSelect(file);
+    }
+  };
+
+  const removeImage = () => {
+    setFormData({ ...formData, image: '' });
+    setImagePreview('');
   };
 
   const handleSubmit = (e) => {
@@ -60,6 +107,7 @@ function ManageMenu() {
       toppings: [],
       popular: false
     });
+    setImagePreview('');
     setShowAddForm(false);
   };
 
@@ -76,6 +124,7 @@ function ManageMenu() {
       toppings: item.toppings || [],
       popular: item.popular || false
     });
+    setImagePreview(item.image);
     setShowAddForm(true);
   };
 
@@ -165,15 +214,43 @@ function ManageMenu() {
                 </div>
 
                 <div className="form-group">
-                  <label>Image URL *</label>
-                  <input
-                    type="url"
-                    name="image"
-                    value={formData.image}
-                    onChange={handleInputChange}
-                    placeholder="https://example.com/image.jpg"
-                    required
-                  />
+                  <label>Upload Image *</label>
+                  <div 
+                    className={`image-upload-container ${isDragging ? 'dragging' : ''}`}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    onDrop={handleDrop}
+                  >
+                    {imagePreview || formData.image ? (
+                      <div className="image-preview">
+                        <img src={imagePreview || formData.image} alt="Preview" />
+                        <button 
+                          type="button" 
+                          className="remove-image-btn"
+                          onClick={removeImage}
+                        >
+                          <CloseIcon size={20} />
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="upload-placeholder">
+                        <Upload size={48} />
+                        <p>Drag & drop an image here</p>
+                        <span>or</span>
+                        <label htmlFor="file-input" className="file-input-label">
+                          Click to browse
+                        </label>
+                        <input
+                          id="file-input"
+                          type="file"
+                          accept="image/*"
+                          onChange={handleFileInput}
+                          style={{ display: 'none' }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <small>Accepts: JPG, PNG, GIF, WebP</small>
                 </div>
 
                 <div className="form-group">

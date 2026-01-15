@@ -2,15 +2,14 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useApp } from '../AppContext';
-import { Menu, X, ShoppingCart, User, LayoutDashboard } from 'lucide-react';
+import { Menu, X, User, LayoutDashboard } from 'lucide-react';
 import './Navbar.css';
 
 function Navbar() {
-  const { isAdmin, setIsAdmin, getCartCount } = useApp();
+  const { isAdmin, setIsAdmin } = useApp();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const cartCount = getCartCount();
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
@@ -95,22 +94,6 @@ function Navbar() {
               </>
             )}
           </motion.button>
-
-          {!isAdmin && (
-            <div className="cart-icon-wrapper">
-              <ShoppingCart size={24} />
-              {cartCount > 0 && (
-                <motion.span
-                  className="cart-badge"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  key={cartCount}
-                >
-                  {cartCount}
-                </motion.span>
-              )}
-            </div>
-          )}
 
           <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

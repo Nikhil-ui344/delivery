@@ -69,9 +69,6 @@ function Navbar() {
               <Link to="/admin/orders" className={isActive('/admin/orders') ? 'active' : ''}>
                 Orders
               </Link>
-              <Link to="/admin/inventory" className={isActive('/admin/inventory') ? 'active' : ''}>
-                Inventory
-              </Link>
               <Link to="/admin/analytics" className={isActive('/admin/analytics') ? 'active' : ''}>
                 Analytics
               </Link>
@@ -141,7 +138,6 @@ function Navbar() {
               <Link to="/admin" onClick={toggleMobileMenu}>Dashboard</Link>
               <Link to="/admin/menu" onClick={toggleMobileMenu}>Menu</Link>
               <Link to="/admin/orders" onClick={toggleMobileMenu}>Orders</Link>
-              <Link to="/admin/inventory" onClick={toggleMobileMenu}>Inventory</Link>
               <Link to="/admin/users" onClick={toggleMobileMenu}>Users</Link>
               <Link to="/admin/offers" onClick={toggleMobileMenu}>Offers</Link>
               <Link to="/admin/analytics" onClick={toggleMobileMenu}>Analytics</Link>

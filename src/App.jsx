@@ -10,7 +10,6 @@ import Reviews from './pages/User/Reviews';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import ManageMenu from './pages/Admin/ManageMenu';
 import ManageOrders from './pages/Admin/ManageOrders';
-import Inventory from './pages/Admin/Inventory';
 import UserManagement from './pages/Admin/UserManagement';
 import OffersManagement from './pages/Admin/OffersManagement';
 import Analytics from './pages/Admin/Analytics';
@@ -66,7 +65,6 @@ function AppContent() {
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/menu" element={<ManageMenu />} />
             <Route path="/admin/orders" element={<ManageOrders />} />
-            <Route path="/admin/inventory" element={<Inventory />} />
             <Route path="/admin/users" element={<UserManagement />} />
             <Route path="/admin/offers" element={<OffersManagement />} />
             <Route path="/admin/analytics" element={<Analytics />} />

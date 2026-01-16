@@ -410,7 +410,10 @@
   border: 2px solid transparent;
   transition: all 0.3s ease;
   font-size: 0.9rem;
-  text-align: center;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .topping-btn:hover {
@@ -422,6 +425,12 @@
   color: var(--dark-text);
   border-color: var(--gold);
   font-weight: 600;
+}
+
+.topping-price-badge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-red);
 }
 
 .edit-actions {

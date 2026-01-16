@@ -20,7 +20,20 @@ function FoodDetailModal({ food, onClose }) {
 
   const calculateTotal = () => {
     const basePrice = food.price * quantity;
-    const toppingsPrice = selectedToppings.length * 1.5 * quantity;
+    let toppingsPrice = 0;
+    
+    if (food.toppings && Array.isArray(food.toppings)) {
+      selectedToppings.forEach(selectedTopping => {
+        const topping = food.toppings.find(t => 
+          typeof t === 'object' ? t.name === selectedTopping : t === selectedTopping
+        );
+        if (topping) {
+          const price = typeof topping === 'object' ? topping.price : 1.5;
+          toppingsPrice += price * quantity;
+        }
+      });
+    }
+    
     return (basePrice + toppingsPrice).toFixed(2);
   };
 
@@ -121,22 +134,28 @@ function FoodDetailModal({ food, onClose }) {
             {/* Toppings */}
             {food.toppings && food.toppings.length > 0 && (
               <div className="customization-section">
-                <h3>Extra Toppings (+$1.50 each)</h3>
+                <h3>Extra Toppings</h3>
                 <div className="toppings-grid">
-                  {food.toppings.map((topping) => (
-                    <motion.label
-                      key={topping}
-                      className="topping-checkbox"
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={selectedToppings.includes(topping)}
-                        onChange={() => handleToppingToggle(topping)}
-                      />
-                      <span>{topping}</span>
-                    </motion.label>
-                  ))}
+                  {food.toppings.map((topping) => {
+                    const toppingName = typeof topping === 'object' ? topping.name : topping;
+                    const toppingPrice = typeof topping === 'object' ? topping.price : 1.5;
+                    
+                    return (
+                      <motion.label
+                        key={toppingName}
+                        className="topping-checkbox"
+                        whileHover={{ scale: 1.02 }}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={selectedToppings.includes(toppingName)}
+                          onChange={() => handleToppingToggle(toppingName)}
+                        />
+                        <span className="topping-name">{toppingName}</span>
+                        <span className="topping-price">+${toppingPrice.toFixed(2)}</span>
+                      </motion.label>
+                    );
+                  })}
                 </div>
               </div>
             )}

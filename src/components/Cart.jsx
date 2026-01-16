@@ -97,8 +97,12 @@ function Cart() {
                           <h4>{item.name}</h4>
                           <p className="cart-item-customizations">
                             Spice: {item.spiceLevel}
-                            {item.selectedToppings.length > 0 && (
-                              <span> • Toppings: {item.selectedToppings.join(', ')}</span>
+                            {item.selectedToppings && item.selectedToppings.length > 0 && (
+                              <span> • Toppings: {
+                                Array.isArray(item.selectedToppings) 
+                                  ? item.selectedToppings.map(t => typeof t === 'object' ? t.name : t).join(', ')
+                                  : item.selectedToppings
+                              }</span>
                             )}
                           </p>
                           <div className="cart-item-price">
@@ -238,15 +242,21 @@ function EditCartItemModal({ item, onClose, onSave, menuItems }) {
           <div className="edit-section">
             <h4>Toppings</h4>
             <div className="toppings-grid">
-              {originalItem.toppings.map((topping) => (
-                <button
-                  key={topping}
-                  className={`topping-btn ${selectedToppings.includes(topping) ? 'active' : ''}`}
-                  onClick={() => handleToppingToggle(topping)}
-                >
-                  {topping}
-                </button>
-              ))}
+              {originalItem.toppings.map((topping) => {
+                const toppingName = typeof topping === 'object' ? topping.name : topping;
+                const toppingPrice = typeof topping === 'object' ? topping.price : 1.5;
+                
+                return (
+                  <button
+                    key={toppingName}
+                    className={`topping-btn ${selectedToppings.includes(toppingName) ? 'active' : ''}`}
+                    onClick={() => handleToppingToggle(toppingName)}
+                  >
+                    <span>{toppingName}</span>
+                    <span className="topping-price-badge">${toppingPrice.toFixed(2)}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         )}

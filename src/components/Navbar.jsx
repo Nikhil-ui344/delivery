@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useApp } from '../AppContext';
 import { Menu, X, User, LayoutDashboard } from 'lucide-react';
 import './Navbar.css';
+import logo from '/logo.png';
 
 function Navbar() {
   const { isAdmin, setIsAdmin } = useApp();
@@ -35,7 +36,7 @@ function Navbar() {
             whileTap={{ scale: 0.95 }}
             className="brand-wrapper"
           >
-            <LayoutDashboard size={28} className="brand-icon" />
+            <img src={logo} alt="Sangam Mexico" className="navbar-logo" />
             <h1>Sangam Mexico</h1>
           </motion.div>
         </Link>

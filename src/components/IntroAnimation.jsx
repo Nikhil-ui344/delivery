@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Utensils, Star, Sparkles } from 'lucide-react';
 import './IntroAnimation.css';
+import logo from '/logo.png';
 
 function IntroAnimation({ onComplete }) {
   useEffect(() => {
@@ -115,7 +116,7 @@ function IntroAnimation({ onComplete }) {
               repeatDelay: 0.5
             }}
           >
-            <Utensils size={80} strokeWidth={2} />
+            <img src={logo} alt="Sangam Mexico Logo" className="intro-logo" />
           </motion.div>
         </motion.div>
 

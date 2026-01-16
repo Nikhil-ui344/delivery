@@ -11,7 +11,12 @@ export const menuItems = [
     reviews: 186,
     available: true,
     spiceLevels: ["Mild", "Medium", "Hot"],
-    toppings: ["Extra Sambar", "Coconut Chutney", "Ghee", "Onion Masala"],
+    toppings: [
+      { name: "Extra Sambar", price: 1.50 },
+      { name: "Coconut Chutney", price: 1.00 },
+      { name: "Ghee", price: 2.00 },
+      { name: "Onion Masala", price: 1.50 }
+    ],
     popular: true
   },
   {
@@ -25,7 +30,12 @@ export const menuItems = [
     reviews: 145,
     available: true,
     spiceLevels: ["Mild", "Medium", "Hot"],
-    toppings: ["Extra Idli", "Ghee", "Podi", "Extra Sambar"]
+    toppings: [
+      { name: "Extra Idli", price: 2.00 },
+      { name: "Ghee", price: 2.00 },
+      { name: "Podi", price: 1.50 },
+      { name: "Extra Sambar", price: 1.50 }
+    ]
   },
   {
     id: 3,
@@ -38,7 +48,12 @@ export const menuItems = [
     reviews: 98,
     available: true,
     spiceLevels: ["Mild", "Medium", "Hot"],
-    toppings: ["Sev", "Coriander", "Lemon", "Extra Peanuts"]
+    toppings: [
+      { name: "Sev", price: 1.00 },
+      { name: "Coriander", price: 0.75 },
+      { name: "Lemon", price: 0.50 },
+      { name: "Extra Peanuts", price: 1.25 }
+    ]
   },
   {
     id: 4,
@@ -51,7 +66,12 @@ export const menuItems = [
     reviews: 234,
     available: true,
     spiceLevels: [],
-    toppings: ["Extra Strong", "Less Sugar", "Extra Ginger", "Elaichi"]
+    toppings: [
+      { name: "Extra Strong", price: 0.50 },
+      { name: "Less Sugar", price: 0.00 },
+      { name: "Extra Ginger", price: 0.75 },
+      { name: "Elaichi", price: 0.50 }
+    ]
   },
   
   // LUNCH
@@ -66,7 +86,13 @@ export const menuItems = [
     reviews: 312,
     available: true,
     spiceLevels: ["Mild", "Medium", "Hot", "Extra Hot"],
-    toppings: ["Raita", "Extra Chicken", "Boiled Egg", "Fried Onions", "Pickle"],
+    toppings: [
+      { name: "Raita", price: 1.50 },
+      { name: "Extra Chicken", price: 3.50 },
+      { name: "Boiled Egg", price: 1.00 },
+      { name: "Fried Onions", price: 1.25 },
+      { name: "Pickle", price: 0.75 }
+    ],
     popular: true
   },
   {
@@ -80,7 +106,12 @@ export const menuItems = [
     reviews: 245,
     available: true,
     spiceLevels: ["Mild", "Medium", "Hot"],
-    toppings: ["Extra Paneer", "Butter", "Cream", "Naan"],
+    toppings: [
+      { name: "Extra Paneer", price: 3.00 },
+      { name: "Butter", price: 1.50 },
+      { name: "Cream", price: 1.50 },
+      { name: "Naan", price: 2.50 }
+    ],
     popular: true
   },
   {
@@ -94,7 +125,12 @@ export const menuItems = [
     reviews: 198,
     available: true,
     spiceLevels: ["Mild", "Medium", "Hot"],
-    toppings: ["Extra Bhature", "Onion", "Pickle", "Green Chutney"]
+    toppings: [
+      { name: "Extra Bhature", price: 2.00 },
+      { name: "Onion", price: 0.50 },
+      { name: "Pickle", price: 0.75 },
+      { name: "Green Chutney", price: 1.00 }
+    ]
   },
   {
     id: 8,

@@ -22,12 +22,30 @@ function ManageMenu() {
     toppings: [],
     popular: false
   });
+  const [newTopping, setNewTopping] = useState({ name: '', price: '' });
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
       [name]: type === 'checkbox' ? checked : value
+    });
+  };
+
+  const handleAddTopping = () => {
+    if (newTopping.name.trim() && newTopping.price) {
+      setFormData({
+        ...formData,
+        toppings: [...formData.toppings, { name: newTopping.name.trim(), price: parseFloat(newTopping.price) }]
+      });
+      setNewTopping({ name: '', price: '' });
+    }
+  };
+
+  const handleRemoveTopping = (index) => {
+    setFormData({
+      ...formData,
+      toppings: formData.toppings.filter((_, i) => i !== index)
     });
   };
 
@@ -284,6 +302,51 @@ function ManageMenu() {
                     />
                     <span>Mark as Popular</span>
                   </label>
+                </div>
+
+                {/* Toppings Section */}
+                <div className="form-group toppings-section">
+                  <label>Toppings (Optional)</label>
+                  <div className="toppings-manager">
+                    <div className="topping-input-row">
+                      <input
+                        type="text"
+                        placeholder="Topping name"
+                        value={newTopping.name}
+                        onChange={(e) => setNewTopping({ ...newTopping, name: e.target.value })}
+                        onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTopping())}
+                      />
+                      <input
+                        type="number"
+                        placeholder="Price"
+                        value={newTopping.price}
+                        onChange={(e) => setNewTopping({ ...newTopping, price: e.target.value })}
+                        step="0.01"
+                        min="0"
+                        onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTopping())}
+                      />
+                      <button type="button" className="btn-add-topping" onClick={handleAddTopping}>
+                        <Plus size={20} /> Add
+                      </button>
+                    </div>
+                    {formData.toppings.length > 0 && (
+                      <div className="toppings-list">
+                        {formData.toppings.map((topping, index) => (
+                          <div key={index} className="topping-item">
+                            <span>{topping.name}</span>
+                            <span className="topping-price">${topping.price.toFixed(2)}</span>
+                            <button
+                              type="button"
+                              className="remove-topping-btn"
+                              onClick={() => handleRemoveTopping(index)}
+                            >
+                              <CloseIcon size={16} />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <div className="form-actions">

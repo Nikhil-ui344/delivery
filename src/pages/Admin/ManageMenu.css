@@ -352,6 +352,104 @@
   margin-top: 5px;
 }
 
+/* Toppings Section */
+.toppings-section {
+  border-top: 2px solid var(--border);
+  padding-top: 20px;
+}
+
+.toppings-manager {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.topping-input-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.topping-input-row input[type="text"] {
+  flex: 1;
+}
+
+.topping-input-row input[type="number"] {
+  width: 120px;
+}
+
+.btn-add-topping {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px;
+  background: var(--primary-red);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-add-topping:hover {
+  background: var(--secondary-red);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.toppings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.topping-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.topping-item span {
+  font-weight: 600;
+  color: var(--dark-text);
+}
+
+.topping-price {
+  color: var(--primary-red);
+  font-weight: 700;
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+.remove-topping-btn {
+  background: var(--danger);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.remove-topping-btn:hover {
+  background: #D32F2F;
+  transform: scale(1.1);
+}
+
 @media (max-width: 768px) {
   .page-header {
     flex-direction: column;
@@ -403,5 +501,19 @@
   .file-input-label {
     padding: 10px 24px;
     font-size: 0.9rem;
+  }
+
+  .topping-input-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .topping-input-row input[type="number"] {
+    width: 100%;
+  }
+
+  .btn-add-topping {
+    width: 100%;
+    justify-content: center;
   }
 }
